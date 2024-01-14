@@ -58,19 +58,54 @@ INTO Salesman_master (Salesman_no,Salesman_name,Address1,Address2,City,Pincode,S
 SELECT 1 FROM DUAL;
 
 
+create table Sales_order (
+Order_no Varchar2(6) check(Order_no LIKE 'O%') PRIMARY KEY,
+Order_date Date,
+Client_no Varchar2(6),
+Dely_address Varchar2(25),
+Salesman_no Varchar2(6),
+Dely_type Char(1) default 'F' check(Dely_type in ('P' , 'F')),
+Billed_yn Char(1),
+Dely_date Date,
+constraint ck_date_correct check(Dely_date >= Order_date),
+Order_status Varchar2(10) check(Order_status IN ('In Process','Fulfilled','Backorder','Cancelled')),
+constraint fk_Client_no foreign key (Client_no) references Client_master(Client_no),
+constraint fk_Salesman_no foreign key (Salesman_no) references Salesman_master(Salesman_no));
 
+INSERT ALL 
+INTO Sales_order (Order_no,Order_date,Client_no,Dely_address,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) VALUES ('O19001','12-JUN-2004','C00001',NULL,'S00001','F','N','20-JUL-2004','In Process')
+INTO Sales_order (Order_no,Order_date,Client_no,Dely_address,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) VALUES ('O19002','5-JUN-2004','C00002',NULL,'S00002','P','N','27-JUN-2004','Cancelled')
+INTO Sales_order (Order_no,Order_date,Client_no,Dely_address,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) VALUES ('O46865','18-FEB-2004','C00003',NULL,'S00003','F','Y','18-FEB-2004','Fulfilled')
+INTO Sales_order (Order_no,Order_date,Client_no,Dely_address,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) VALUES ('O19003','03-APR-2004','C00001',NULL,'S00001','F','Y','07-APR-2004','Fulfilled')
+INTO Sales_order (Order_no,Order_date,Client_no,Dely_address,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) VALUES ('O46866','20-MAY-2004','C00004',NULL,'S00002','P','N','22-MAY-2004','Cancelled')
+INTO Sales_order (Order_no,Order_date,Client_no,Dely_address,Salesman_no,Dely_type,Billed_yn,Dely_date,Order_status) VALUES ('O19008','24-MAY-2004','C00005',NULL,'S00004','F','N','26-JUL-2004','In Process')
+SELECT 1 FROM DUAL;
 
+create table Sales_order_details (
+Order_no Varchar2(6),
+constraint fk_Order_no FOREIGN KEY (Order_no) REFERENCES Sales_order(Order_no),
+Product_no varchar2(6),
+constraint fk_Product_no FOREIGN KEY (Product_no) REFERENCES Product_master(PRODUCT_NO),
+Oty_ordered Number(8),
+Qty_disp Number(8),
+Product_rate Number(10,2));
 
-
-
-
-
-
-
-
-
-
-
+INSERT ALL
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19001','P00001',4,4,525)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19001','P07965',2,1,8400)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19001','P07885',2,1,5250)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19002','P00001',10,0,525)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O46865','P07868',3,3,3150)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O46865','P07885',3,1,5250)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O46865','P00001',10,10,525)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O46865','P0345',4,4,1050)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19003','P0345',2,2,1050)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19003','P06734',1,1,12000)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O46866','P07965',1,0,8400)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O46866','P07975',1,0,1050)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19008','P00001',10,5,525)
+INTO Sales_order_details (Order_no,Product_no,Oty_ordered,Qty_disp,Product_rate) VALUES ('O19008','P07975',5,3,1050)
+SELECT 1 FROM DUAL;
 
 
 

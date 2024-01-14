@@ -115,7 +115,7 @@ Assignmet Answers:
 4. select * from Client_master where Bal_due > 10000;
 5. select * from Sales_order where Order_date between to_date('01-JAN-2004','DD-MON-YYYY') and to_date('31-JAN-2004','DD-MON-YYYY');
 6. select * from Sales_order where Client_no in ('C00001','C00002');
-7. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt
+7. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt ---> SELECT p.Product_rate, p.Product_no, pp.Description FROM Sales_order_details p where p.Product_rate > 2000 AND p.Product_rate <= 5000 JOIN Product_master pp ON p.Product_no = pp.Product_no;
 8. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt
 9. select Name,City,State from Client_master where State <> 'Maharashtra';
 10. select count(*) from Sales_order;

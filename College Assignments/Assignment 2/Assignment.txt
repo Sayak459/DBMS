@@ -115,4 +115,12 @@ Assignmet Answers:
 4. select * from Client_master where Bal_due > 10000;
 5. select * from Sales_order where Order_date between to_date('01-JAN-2004','DD-MON-YYYY') and to_date('31-JAN-2004','DD-MON-YYYY');
 6. select * from Sales_order where Client_no in ('C00001','C00002');
-7. select Description from Product_master where Sell_price > 200 and Sell_price <= 500;
+7. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt
+8. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt
+9. select Name,City,State from Client_master where State <> 'Maharashtra';
+10. select count(*) from Sales_order;
+11. select AVG(Sell_price) AS Average_value from Product_master;
+12. select MIN(Sell_price) AS min_price, MAX(Sell_price) AS max_price from Product_master;
+13. select COUNT(*) AS count_of_items from Sales_order_details where Product_rate >= 1500;
+14. select Description from Product_master where Qty_on_hand < Reorder_lvl;
+15. select Order_no,Order_date from Sales_order;

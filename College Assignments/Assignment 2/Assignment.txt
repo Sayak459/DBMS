@@ -116,7 +116,17 @@ Assignmet Answers:
 5. select * from Sales_order where Order_date between to_date('01-JAN-2004','DD-MON-YYYY') and to_date('31-JAN-2004','DD-MON-YYYY');
 6. select * from Sales_order where Client_no in ('C00001','C00002');
 7. SELECT p.Product_rate, p.Product_no, pp.Description FROM Sales_order_details p JOIN Product_master pp ON p.Product_no = pp.Product_no where p.Product_rate > 2000 AND p.Product_rate <= 5000;  ----OR----  SELECT * FROM Sales_order_details p JOIN Product_master pp ON p.Product_no = pp.Product_no where p.Product_rate > 2000 AND p.Product_rate <= 5000;
-8. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt
+8. SELECT
+  Order_no,
+  Product_no,
+  Oty_ordered,
+  Qty_disp,
+  Product_rate,
+  Product_rate * 0.15 AS new_price
+FROM
+  Sales_order_details
+WHERE
+  Product_rate > 1500;
 9. select Name,City,State from Client_master where State <> 'Maharashtra';
 10. select count(*) from Sales_order;
 11. select AVG(Sell_price) AS Average_value from Product_master;

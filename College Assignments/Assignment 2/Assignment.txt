@@ -35,7 +35,7 @@ INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_h
 INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_hand,Reorder_lvl,Sell_price,Cost_price) VALUES ('P07965','Denim Shirts',4,'Piece',100,40,350,250)
 INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_hand,Reorder_lvl,Sell_price,Cost_price) VALUES ('P07975','Lyers Tops',5,'Piece',70,30,300,175)
 INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_hand,Reorder_lvl,Sell_price,Cost_price) VALUES ('P08865','Skirts',5,'Piece',75,30,450,300)
-SELECT 1 FROM DIAL;
+SELECT 1 FROM DUAL;
 
 create table Salesman_master (
 Salesman_no Varchar2(6) check(Salesman_no LIKE 'S%') PRIMARY KEY,

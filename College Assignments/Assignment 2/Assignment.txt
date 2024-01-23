@@ -35,7 +35,7 @@ INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_h
 INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_hand,Reorder_lvl,Sell_price,Cost_price) VALUES ('P07965','Denim Shirts',4,'Piece',100,40,350,250)
 INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_hand,Reorder_lvl,Sell_price,Cost_price) VALUES ('P07975','Lyers Tops',5,'Piece',70,30,300,175)
 INTO Product_master (product_no,Description,Profit_percent,Unit_measure,Qty_on_hand,Reorder_lvl,Sell_price,Cost_price) VALUES ('P08865','Skirts',5,'Piece',75,30,450,300)
-SELECT 1 FROM DIAL;
+SELECT 1 FROM DUAL;
 
 create table Salesman_master (
 Salesman_no Varchar2(6) check(Salesman_no LIKE 'S%') PRIMARY KEY,
@@ -111,12 +111,22 @@ SELECT 1 FROM DUAL;
 Assignmet Answers:
 1. select Name from Client_master where Name like '_a%';
 2. select * from Client_master where City like '_a%';
-3. select * from Client_master where City in ('Bombay' , 'Delhi');
+3. select * from Client_master where City in ('Mumbai' , 'Delhi');
 4. select * from Client_master where Bal_due > 10000;
 5. select * from Sales_order where Order_date between to_date('01-JAN-2004','DD-MON-YYYY') and to_date('31-JAN-2004','DD-MON-YYYY');
 6. select * from Sales_order where Client_no in ('C00001','C00002');
-7. SELECT p.Product_rate, p.Product_no, pp.Description FROM Sales_order_details p JOIN Product_master pp ON p.Product_no = pp.Product_no where p.Product_rate > 2000 AND p.Product_rate <= 5000;
-8. select Description from Product_master where Sell_price > 200 and Sell_price <= 500; ---->> Doubt
+7. SELECT p.Product_rate, p.Product_no, pp.Description FROM Sales_order_details p JOIN Product_master pp ON p.Product_no = pp.Product_no where p.Product_rate > 2000 AND p.Product_rate <= 5000;  ----OR----  SELECT * FROM Sales_order_details p JOIN Product_master pp ON p.Product_no = pp.Product_no where p.Product_rate > 2000 AND p.Product_rate <= 5000;
+8. SELECT
+  Order_no,
+  Product_no,
+  Oty_ordered,
+  Qty_disp,
+  Product_rate,
+  Product_rate * 0.15 AS new_price
+FROM
+  Sales_order_details
+WHERE
+  Product_rate > 1500;
 9. select Name,City,State from Client_master where State <> 'Maharashtra';
 10. select count(*) from Sales_order;
 11. select AVG(Sell_price) AS Average_value from Product_master;

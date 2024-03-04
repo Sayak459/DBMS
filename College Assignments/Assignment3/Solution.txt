@@ -1,0 +1,3 @@
+1. SELECT TO_CHAR(systimestamp,'DD-MON-YYYY HH24:MI:SS') from dual;
+2. SELECT 2 * 2 AS MUL_RESULT FROM DUAL;
+3. 

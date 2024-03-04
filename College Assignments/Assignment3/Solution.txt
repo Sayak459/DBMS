@@ -42,3 +42,5 @@ INSERT into EMP_NEW VALUES(7369,'Smith','Clerk',7902,'17-dec-80',800,NULL,'Resea
 3. SELECT MAX(SAL) AS Maximum , MIN(SAL) AS Minimum , SUM(SAL) AS Total , AVG(SAL) AS Average FROM EMP_NEW ;
 4. SELECT JOB , MAX(SAL) AS Maximum , MIN(SAL) AS Minimum , SUM(SAL) AS Total , AVG(SAL) AS Average FROM EMP_NEW GROUP BY JOB ;
 5. SELECT COUNT(*) AS "Number_of_Managers" FROM EMP_NEW WHERE JOB = 'Manager';
+6. SELECT ENAME FROM EMP_NEW WHERE HIREDATE > '01-jan-1980' ;
+7. SELECT MAX(SAL) AS "Max Salary" FROM EMP_NEW WHERE JOB = 'Salesman';

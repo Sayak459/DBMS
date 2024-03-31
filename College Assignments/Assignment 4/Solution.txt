@@ -55,4 +55,6 @@ INTO RESERVES (s_id,b_id,day) VALUES (7863,2489,'Thursday')
 SELECT 1 FROM DUAL;
 
 1. SELECT B.color FROM BOATS B INNER JOIN RESERVES R ON B.b_id = R.b_id INNER JOIN SAILORS S ON S.s_id = R.s_id WHERE S.s_name = 'Tarun';
-2. 
+2. SELECT s.s_id,s.s_name FROM SAILORS s INNER JOIN RESERVES r ON s.s_id = r.s_id WHERE r.day = 'Monday';
+3. SELECT b_id,b_name FROM BOATS WHERE color IN ('Red','green');
+4. DELETE FROM SAILORS WHERE age > 60 ;

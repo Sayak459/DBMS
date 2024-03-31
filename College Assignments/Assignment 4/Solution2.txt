@@ -1,0 +1,5 @@
+create table Teacher(
+    Tid NUMBER(10,2),
+    Name Varchar(20),
+    Dept()
+);

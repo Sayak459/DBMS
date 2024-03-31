@@ -1,3 +1,22 @@
 create table SAILORS(
-   
+   s_id NUMBER(10,2) PRIMARY KEY,
+   s_name VARCHAR2(20),
+   rating NUMBER(10),
+   age NUMBER(3)
 );
+
+create table BOATS(
+   b_id NUMBER(10,2) PRIMARY KEY,
+   b_name VARCHAR2(20),
+   color VARCHAR2(10)
+);
+
+create table RESERVES(
+   s_id NUMBER(10,2),
+   b_id NUMBER(10,2),
+   day CHAR(10),
+   FOREIGN KEY(s_id) REFERENCES SAILORS(s_id),
+   FOREIGN KEY(b_id) REFERENCES BOATS(b_id),
+   PRIMARY KEY (s_id , b_id)
+);
+

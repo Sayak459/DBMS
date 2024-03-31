@@ -26,21 +26,21 @@ INSERT ALL
 INTO Teacher (Tid,Name,Dept) VALUES (1442,'Thomas Cooper','Psychology')
 INTO Teacher (Tid,Name,Dept) VALUES (1442,'Michel Parogy','Physics')
 INTO Teacher (Tid,Name,Dept) VALUES (1442,'Jennifer Dooplo','Biology')
-INTO Teacher (Tid,Name,Dept) VALUES (1442,'Sebastian Dofman','Chemistry')
+INTO Teacher (Tid,Name,Dept) VALUES (1442,'Sebastian Dofman','Computer')
 INTO Teacher (Tid,Name,Dept) VALUES (1442,'Maya Anderson','Environment Science')
 SELECT 1 FROM DUAL;
 
 INSERT ALL 
 INTO Subject (Subno,Subtitle) VALUES (6533,'Thermodynamics')
 INTO Subject (Subno,Subtitle) VALUES (4852,'Human Consciousness')
-INTO Subject (Subno,Subtitle) VALUES (6533,'Acids and Bases')
+INTO Subject (Subno,Subtitle) VALUES (6533,'DBMS')
 INTO Subject (Subno,Subtitle) VALUES (6533,'Cell Structure')
 INTO Subject (Subno,Subtitle) VALUES (6533,'Pollution')
 SELECT 1 FROM DUAL;
 
 INSERT ALL
-INTO Student (Rollno,Sname,City) VALUES
-INTO Student (Rollno,Sname,City) VALUES
+INTO Student (Rollno,Sname,City) VALUES (12,'Rakesh Prasad','Patna')
+INTO Student (Rollno,Sname,City) VALUES ()
 INTO Student (Rollno,Sname,City) VALUES
 INTO Student (Rollno,Sname,City) VALUES
 INTO Student (Rollno,Sname,City) VALUES

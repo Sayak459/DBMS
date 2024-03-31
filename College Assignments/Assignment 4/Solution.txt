@@ -32,12 +32,12 @@ INTO SAILORS (s_id,s_name,rating,age) VALUES (7863,'Ankan',3,24)
 SELECT 1 FROM DUAL;
 
 INSERT ALL
-INTO BOATS (b_is,b_name,color) VALUES (7859,'Dupesh',5,26)
-INTO BOATS (b_is,b_name,color) VALUES (7751,'Rohit',6,23)
-INTO BOATS (b_is,b_name,color) VALUES (7954,'Rahul',2,28)
-INTO BOATS (b_is,b_name,color) VALUES (7823,'Sagar',7,31)
-INTO BOATS (b_is,b_name,color) VALUES (7269,'Tarun',9,25)
-INTO BOATS (b_is,b_name,color) VALUES (7890,'Mrinal',4,22)
-INTO BOATS (b_is,b_name,color) VALUES (7152,'Sukesh',6,21)
-INTO BOATS (b_is,b_name,color) VALUES (7863,'Ankan',3,24)
+INTO BOATS (b_id,b_name,color) VALUES (2536,'The La Santa María','Black')
+INTO BOATS (b_id,b_name,color) VALUES (2489,'C.S.S. Hunley','White')
+INTO BOATS (b_id,b_name,color) VALUES (2641,'C.S.S. Virginia','Cyan')
+INTO BOATS (b_id,b_name,color) VALUES (2322,'U.S.S. Constitution','Orange')
+INTO BOATS (b_id,b_name,color) VALUES (2102,'HMS Victory','green')
+INTO BOATS (b_id,b_name,color) VALUES (2006,'Bismarck','Purple')
+INTO BOATS (b_id,b_name,color) VALUES (2398,'U.S.S. Arizona','Blue')
+INTO BOATS (b_id,b_name,color) VALUES (2846,'RMS Titanic','Brown')
 SELECT 1 FROM DUAL;

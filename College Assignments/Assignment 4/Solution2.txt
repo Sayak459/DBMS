@@ -1,5 +1,16 @@
 create table Teacher(
     Tid NUMBER(10,2),
-    Name Varchar(20),
-    Dept()
+    Name Varchar2(20),
+    Dept Varchar2(20)
+);
+
+create table Subject(
+    Subno NUMBER(10),
+    Subtitle Varchar2(20)
+);
+
+create table Student(
+    Rollno NUMBER(10),
+    Sname Varchar2(20),
+    City Varchar2(20)
 );

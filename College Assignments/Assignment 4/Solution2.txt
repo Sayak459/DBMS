@@ -43,7 +43,7 @@ INTO Student (Rollno,Sname,City) VALUES (12,'Rakesh Prasad','Patna')
 INTO Student (Rollno,Sname,City) VALUES (26,'Subham Mukherjee','Kolkata')
 INTO Student (Rollno,Sname,City) VALUES (16,'Ishika Pramod','Pune')
 INTO Student (Rollno,Sname,City) VALUES (02,'Kaustab Mallick','Kolkata')
-INTO Student (Rollno,Sname,City) VALUES (21,'Nandini Bandyopadhyay')
+INTO Student (Rollno,Sname,City) VALUES (21,'Nandini Ganguly','Kolkata')
 SELECT 1 FROM DUAL;
 
 INSERT ALL

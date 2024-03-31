@@ -53,3 +53,6 @@ INTO RESERVES (s_id,b_id,day) VALUES (7890,2322,'Tuesday')
 INTO RESERVES (s_id,b_id,day) VALUES (7152,2641,'Monday')
 INTO RESERVES (s_id,b_id,day) VALUES (7863,2489,'Thursday')
 SELECT 1 FROM DUAL;
+
+1. SELECT B.color FROM BOATS B INNER JOIN RESERVES R ON B.b_id = R.b_id INNER JOIN SAILORS S ON S.s_id = R.s_id WHERE S.s_name = 'Tarun';
+2. 

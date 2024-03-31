@@ -39,6 +39,14 @@ INTO Subject (Subno,Subtitle) VALUES (6248,'Pollution')
 SELECT 1 FROM DUAL;
 
 INSERT ALL
+INTO TaughtBy (Tid,Subno) VALUES (1442,4852)
+INTO TaughtBy (Tid,Subno) VALUES (1579,6533)
+INTO TaughtBy (Tid,Subno) VALUES (2648,4698)
+INTO TaughtBy (Tid,Subno) VALUES (1678,5676)
+INTO TaughtBy (Tid,Subno) VALUES (1334,6248)
+SELECT 1 FROM DUAL;
+
+INSERT ALL
 INTO Student (Rollno,Sname,City) VALUES (12,'Rakesh Prasad','Patna')
 INTO Student (Rollno,Sname,City) VALUES (26,'Subham Mukherjee','Kolkata')
 INTO Student (Rollno,Sname,City) VALUES (16,'Ishika Pramod','Pune')
@@ -46,10 +54,7 @@ INTO Student (Rollno,Sname,City) VALUES (02,'Kaustab Mallick','Kolkata')
 INTO Student (Rollno,Sname,City) VALUES (21,'Nandini Ganguly','Kolkata')
 SELECT 1 FROM DUAL;
 
-INSERT ALL
-INTO TaughtBy (Tid,Subno) VALUES (1442,4852)
-INTO TaughtBy (Tid,Subno) VALUES (1579,6533)
-INTO TaughtBy (Tid,Subno) VALUES (2648,4698)
-INTO TaughtBy (Tid,Subno) VALUES (1678,5676)
-INTO TaughtBy (Tid,Subno) VALUES (1334,6248)
-SELECT 1 FROM DUAL;
+1. SELECT s.Name FROM Teacher s INNER JOIN TaughtBy t ON s.Tid = t.Tid INNER JOIN Subject sub ON sub.Subno = t.Subno WHERE sub.Subtitle = 'Thermodynamics' ;
+2. UPDATE Subject SET Subtitle = 'RDBMS' WHERE Subtitle = 'DBMS' ;
+3. SELECT * from Student WHERE City = 'Kolkata' AND Rollno BETWEEN 20 AND 25;
+4. SELECT * from Student WHERE City = 'Kolkata' ORDER BY Rollno DESC;

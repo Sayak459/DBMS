@@ -1,11 +1,11 @@
 create table Teacher(
-    Tid NUMBER(10,2),
+    Tid NUMBER(10,2) PRIMARY KEY,
     Name Varchar2(20),
     Dept Varchar2(20)
 );
 
 create table Subject(
-    Subno NUMBER(10),
+    Subno NUMBER(10) PRIMARY KEY,
     Subtitle Varchar2(20)
 );
 
@@ -17,5 +17,31 @@ create table Student(
 
 create table TaughtBy(
     Tid NUMBER(10),
-    Subno NUMBER(10)
+    Subno NUMBER(10),
+    FOREIGN KEY(Tid) REFERENCES Teacher(Tid),
+    FOREIGN KEY(Subno) REFERENCES Subject(subno),
 );
+
+INSERT ALL 
+INTO Teacher (Tid,Name,Dept) VALUES (1442,'Thomas Cooper','Psychology')
+INTO Teacher (Tid,Name,Dept) VALUES (1442,'Michel Parogy','Physics')
+INTO Teacher (Tid,Name,Dept) VALUES (1442,'Jennifer Dooplo','Biology')
+INTO Teacher (Tid,Name,Dept) VALUES (1442,'Sebastian Dofman','Chemistry')
+INTO Teacher (Tid,Name,Dept) VALUES (1442,'Maya Anderson','Environment Science')
+SELECT 1 FROM DUAL;
+
+INSERT ALL 
+INTO Subject (Subno,Subtitle) VALUES (1442,'Thomas Cooper','Psychology')
+INTO Subject (Subno,Subtitle) VALUES (1442,'Michel Parogy','Physics')
+INTO Subject (Subno,Subtitle) VALUES (1442,'Jennifer Dooplo','Biology')
+INTO Subject (Subno,Subtitle) VALUES (1442,'Sebastian Dofman','Chemistry')
+INTO Subject (Subno,Subtitle) VALUES (1442,'Maya Anderson','Environment Science')
+SELECT 1 FROM DUAL;
+
+INSERT ALL
+INTO Student (Rollno,Sname,City) VALUES
+INTO Student (Rollno,Sname,City) VALUES
+INTO Student (Rollno,Sname,City) VALUES
+INTO Student (Rollno,Sname,City) VALUES
+INTO Student (Rollno,Sname,City) VALUES
+SELECT 1 FROM DUAL;

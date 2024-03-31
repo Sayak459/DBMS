@@ -1,7 +1,7 @@
 create table SAILORS(
    s_id NUMBER(10,2) PRIMARY KEY,
    s_name VARCHAR2(20),
-   rating NUMBER(10),
+   rating NUMBER(2),
    age NUMBER(3)
 );
 
@@ -20,3 +20,24 @@ create table RESERVES(
    PRIMARY KEY (s_id , b_id)
 );
 
+INSERT ALL
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7859,'Dupesh',5,26)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7751,'Rohit',6,23)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7954,'Rahul',2,28)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7823,'Sagar',7,31)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7269,'Tarun',9,25)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7890,'Mrinal',4,22)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7152,'Sukesh',6,21)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7863,'Ankan',3,24)
+SELECT 1 FROM DUAL;
+
+INSERT ALL
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7859,'Dupesh',5,26)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7751,'Rohit',6,23)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7954,'Rahul',2,28)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7823,'Sagar',7,31)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7269,'Tarun',9,25)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7890,'Mrinal',4,22)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7152,'Sukesh',6,21)
+INTO SAILORS (s_id,s_name,rating,age) VALUES (7863,'Ankan',3,24)
+SELECT 1 FROM DUAL;

@@ -38,6 +38,18 @@ INTO BOATS (b_id,b_name,color) VALUES (2641,'C.S.S. Virginia','Cyan')
 INTO BOATS (b_id,b_name,color) VALUES (2322,'U.S.S. Constitution','Orange')
 INTO BOATS (b_id,b_name,color) VALUES (2102,'HMS Victory','green')
 INTO BOATS (b_id,b_name,color) VALUES (2006,'Bismarck','Purple')
-INTO BOATS (b_id,b_name,color) VALUES (2398,'U.S.S. Arizona','Blue')
+INTO BOATS (b_id,b_name,color) VALUES (2398,'U.S.S. Arizona','Red')
 INTO BOATS (b_id,b_name,color) VALUES (2846,'RMS Titanic','Brown')
+SELECT 1 FROM DUAL;
+
+
+INSERT ALL
+INTO RESERVES (s_id,b_id,day) VALUES (7859,2536,'Monday')
+INTO RESERVES (s_id,b_id,day) VALUES (7751,2846,'Tuesday')
+INTO RESERVES (s_id,b_id,day) VALUES (7954,2398,'Wednesday')
+INTO RESERVES (s_id,b_id,day) VALUES (7823,2006,'Friday')   
+INTO RESERVES (s_id,b_id,day) VALUES (7269,2102,'Sunday')
+INTO RESERVES (s_id,b_id,day) VALUES (7890,2322,'Tuesday')
+INTO RESERVES (s_id,b_id,day) VALUES (7152,2641,'Monday')
+INTO RESERVES (s_id,b_id,day) VALUES (7863,2489,'Thursday')
 SELECT 1 FROM DUAL;

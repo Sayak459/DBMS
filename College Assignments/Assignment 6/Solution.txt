@@ -39,5 +39,5 @@ Queries:
 a) Select City from (Select City from Customer UNION Select City from Suppliers) MINUS Select City from (Select City from Customer INTERSECT Select City from Suppliers);
 b) Select City from Customer UNION Select City from Suppliers;
 c) Select City from Customer Where Country='Germany' UNION Select City from Suppliers Where Country='Germany';
-d) 
-e) 
+d)  Select s.CustomerName , d.SupplierName from Customer s INNER JOIN Suppliers d ON s.PostalCode = d.PostalCode AND s.City=d.City;
+e) Select Country FROM Suppliers MINUS Select Country from Customer;

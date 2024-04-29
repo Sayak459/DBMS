@@ -16,3 +16,5 @@ CREATE TABLE EMP_NEW(
 Queries:
 1. select ENAME from EMP_NEW where SAL = (select MAX(SAL) FROM EMP_NEW);
 2. select ENAME from EMP_NEW where SAL=(Select MAX(SAL) from EMP_NEW where JOB='Salesman');
+3. select ENAME from EMP_NEW where SAL=(Select MIN(SAL) from EMP_NEW where JOB='Clerk');
+4. SELECT DEPT_NAME FROM (SELECT DEPT_NAME, AVG(SAL) AS AVG_SAL FROM EMP_NEW GROUP BY DEPT_NAME ORDER BY AVG_SAL DESC) WHERE ROWNUM = 1;

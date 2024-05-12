@@ -83,3 +83,5 @@ Queries:
 
 create view Salesperson_Customer_Orders as select s.SNAME , c.CNAME , o.ONUM from (SALESPEOPLE s INNER JOIN CUSTOMER2 c ON s.SNUM = c.SNUM) INNER JOIN ORDERS2 o ON s.SNUM = o.SNUM ; 
 
+
+create view check_salespeople as select SNUM , COMM from SALESPEOPLE WHERE COMM between 1000 AND 2000;

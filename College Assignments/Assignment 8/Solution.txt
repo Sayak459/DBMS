@@ -82,4 +82,4 @@ Queries:
 1. create view RATING_VIEW as select CNAME from CUSTOMER2 where RATING=(select max(RATING) from CUSTOMER2);
 2. create view Number_city as SELECT COUNT(SNUM) AS NumberOfSalespeople,CITY from SALESPEOPLE GROUP BY CITY ;
 3. create view average_total as SELECT AVG(o.AMT) AS AVERAGE_AMT, COUNT(o.ONUM) AS ORDER_NUMBER , s.SNUM AS SALESPEOPLE_NUMBER , s.SNAME FROM ORDERS2 o INNER JOIN SALESPEOPLE s ON o.SNUM = s.SNUM GROUP BY s.SNUM , s.SNAME;
-4. 
+4. create view salesperson_customer as select c.CNAME , s.SNAME from CUSTOMER2 c INNER JOIN SALESPEOPLE s on c.SNUM = s.SNUM GROUP BY c.CNAME , s.SNAME ;

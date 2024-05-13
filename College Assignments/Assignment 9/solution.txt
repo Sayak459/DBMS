@@ -51,5 +51,8 @@ BEGIN
   FROM emp2
   WHERE EXTRACT(YEAR FROM HIRE) = 1981;
   DBMS_OUTPUT.PUT_LINE('First character of employee name hired in 1981: ' || v_first_char);
+  EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+  DBMS_OUTPUT.PUT_LINE('No Employees hired in 1981.');
 END;
 /

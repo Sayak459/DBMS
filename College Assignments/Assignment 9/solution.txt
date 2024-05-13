@@ -8,6 +8,44 @@ create table emp2(
   HIRE DATE
 );
 
+
+BEGIN
+  FOR i IN 1..30 LOOP
+    DECLARE
+      v_empname VARCHAR2(30);
+      v_salary NUMBER(10);
+      v_office VARCHAR2(20);
+      v_emppost VARCHAR2(20);
+      v_hire_date DATE;
+    BEGIN
+      v_empname := 'Employee ' || TO_CHAR(i);
+      v_salary := ROUND(DBMS_RANDOM.VALUE(30000, 80000));
+      IF MOD(i, 3) = 0 THEN
+        v_office := 'Headquarters';
+      ELSE
+        v_office := 'Branch ' || TO_CHAR(MOD(i, 3));
+      END IF;
+      IF MOD(i, 5) = 0 THEN
+        v_emppost := 'Salesperson';
+      ELSE
+        v_emppost := CASE MOD(i, 4)
+                      WHEN 1 THEN 'Manager'
+                      WHEN 2 THEN 'Engineer'
+                      WHEN 3 THEN 'Supervisor'
+                      ELSE 'Assistant'
+                    END;
+      END IF;
+      v_hire_date := TRUNC(SYSDATE - DBMS_RANDOM.VALUE(0, 3650));
+      INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE)
+      VALUES (i, v_empname, v_salary, v_office, v_emppost, v_hire_date);
+    END;
+  END LOOP;
+  COMMIT;
+END;
+/
+
+
+
 create TABLE BONUS(
 
 );

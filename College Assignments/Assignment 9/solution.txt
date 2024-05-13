@@ -10,6 +10,14 @@ create table emp2(
 );
 
 
+create TABLE BONUS(
+  BID NUMBER(5) PRIMARY KEY,
+  BAMT NUMBER(10),
+  EMPNO NUMBER(5),
+  FOREIGN KEY (EMPNO) REFERENCES EMP2(EMPNO)
+);
+
+
 INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE, GRADE) VALUES (1, 'John Doe', 50000, 'New York', 'Manager', TO_DATE('01-JAN-1981', 'DD-MON-YYYY'), 4);
 INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE, GRADE) VALUES (2, 'Jane Smith', 60000, 'Los Angeles', 'Developer', TO_DATE('15-FEB-1982', 'DD-MON-YYYY'), 3);
 INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE, GRADE) VALUES (3, 'Michael Johnson', 55000, 'Chicago', 'Analyst', TO_DATE('20-MAR-1981', 'DD-MON-YYYY'), 5);
@@ -26,11 +34,6 @@ INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE, GRADE) VALUES (
 INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE, GRADE) VALUES (14, 'Olivia Clark', 57000, 'Detroit', 'Assistant', TO_DATE('15-FEB-1988', 'DD-MON-YYYY'), 4);
 INSERT INTO emp2 (EMPNO, EMPNAME, SALARY, OFFICE, EMPPOST, HIRE, GRADE) VALUES (15, 'Ethan Adams', 58000, 'San Diego', 'Designer', TO_DATE('20-MAR-1981', 'DD-MON-YYYY'), 2);
 
-
-
-create TABLE BONUS(
-
-);
 
 
 Use this query to get the outputs on console:
@@ -105,7 +108,9 @@ BEGIN
 END;
 /
 
-d. 
+d. DECLARE
+bonus_amt = 0.02;
+BEGIN
 
 e. DECLARE
 min_salary NUMBER(10);
@@ -231,6 +236,49 @@ BEGIN
     WHERE EMPNO = emp_rec.EMPNO;
   END LOOP;
 
+  COMMIT;
+  DBMS_OUTPUT.PUT_LINE('New salary and hike date calculated and updated successfully.');
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END;
+/
+
+
+
+
+
+DECLARE
+v_salary_hike_factor NUMBER(2,5);
+BEGIN
+  BEGIN
+      EXECUTE IMMEDIATE 'ALTER TABLE emp2 ADD (NEW_SALARY NUMBER(10,2), HIKE_DATE DATE)';
+    EXCEPTION
+      WHEN OTHERS THEN
+        IF SQLCODE != -955 THEN
+          RAISE;
+        END IF;
+    END;
+  FOR emp_rec IN (SELECT EMPNO, SALARY, GRADE FROM emp2) LOOP
+    CASE emp_rec.GRADE
+      WHEN 1 THEN
+        v_salary_hike_factor := 0.15;
+      WHEN 2 THEN
+        v_salary_hike_factor := 0.12;
+      WHEN 3 THEN
+        v_salary_hike_factor := 0.10;
+      WHEN 4 THEN
+        v_salary_hike_factor := 0.10;
+      WHEN 5 THEN
+        v_salary_hike_factor := 0.05;
+      ELSE
+        v_salary_hike_factor := 0;
+    END CASE;
+    UPDATE emp2
+    SET NEW_SALARY = ROUND(emp_rec.SALARY * (1 + v_salary_hike_factor), 2),
+        HIKE_DATE = SYSDATE
+    WHERE EMPNO = emp_rec.EMPNO;
+  END LOOP;
   COMMIT;
   DBMS_OUTPUT.PUT_LINE('New salary and hike date calculated and updated successfully.');
 EXCEPTION

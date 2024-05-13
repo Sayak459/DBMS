@@ -1,3 +1,17 @@
+EMP Table:
+create table emp2(
+  EMPNO NUMBER(5) PRIMARY KEY,
+  EMPNAME VARCHAR2(30),
+  SALARY NUMBER(10),
+  OFFICE VARCHAR2(20),
+  EMPPOST VARCHAR2(20),
+  HIRE DATE
+);
+
+create TABLE BONUS(
+
+);
+
 a. DECLARE
 balance NUMBER(20) := &balance_input;
 min_balance NUMBER(20) := 1000;
@@ -9,11 +23,12 @@ END IF;
 END;
 /
 
-
-EMP Table:
-create table emp2(
-  EMPNO NUMBER(5) PRIMARY KEY,
-  EMPNAME VARCHAR2(30),
-  SALARY NUMBER(10),
-  
-);
+b. DECLARE
+  v_first_char CHAR(1);
+BEGIN
+  SELECT SUBSTR(EMPNAME, 1, 3) INTO v_first_char
+  FROM emp2
+  WHERE EXTRACT(YEAR FROM HIRE) = 1981;
+  DBMS_OUTPUT.PUT_LINE('First character of employee name hired in 1981: ' || v_first_char);
+END;
+/

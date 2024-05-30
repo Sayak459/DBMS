@@ -1,0 +1,100 @@
+a. declare
+balance NUMBER(20) := &user_input ;
+min_balance NUMBER(20) := 1000 ;
+begin
+if balance < min_balance THEN
+balance := balance - 100 ;
+dbms_output.put_line('The Balance is: ' || balance) ;
+end if ;
+end ;
+/
+
+b. declare
+cursor cursor_extract is
+select substr(EMPNAME , 1 , 3) as v_first_char,
+EMPNO,
+EMPNAME as NICKNAME,
+SALARY,
+OFFICE,
+EMPPOST,
+HIRE
+from emp2 where EXTRACT(YEAR FROM HIRE) = 1981;
+v_first_char VARCHAR2(3) ;
+empno NUMBER ;
+nickname VARCHAR2(50) ;
+salary NUMBER(10);
+office VARCHAR2(50);
+emppost VARCHAR2(50);
+hire date ;
+BEGIN
+open cursor_extract;
+LOOP
+fetch cursor_extract INTO v_first_char , empno , nickname , salary , office , emppost , hire;
+EXIT WHEN cursor_extract%NOTFOUND ;
+dbms_output.put_line('First three Character of the employee name hired in 1981: ' || v_first_char) ;
+dbms_output.put_line('Employee number: ' || empno);
+dbms_output.put_line('nickname: ' || nickname);
+dbms_output.put_line('salary: ' || salary);
+dbms_output.put_line('office: ' || office);
+dbms_output.put_line('emppost: ' || emppost);
+dbms_output.put_line('Hire Date: ' || hire);
+dbms_output.put_line('============================================================') ;
+END LOOP ;
+close cursor_extract ;
+if cursor_extract%NOTFOUND THEN
+dbms_output.put_line('No Employees hired in 1981.');
+end if;
+exception
+when others THEN
+dbms_output.put_line('Error: ' || SQLERRM) ;
+end;
+/
+
+c. declare
+cursor cursor_new is
+select EMPNO , EMPNAME from (select EMPNO , EMPNAME FROM emp2 ORDER BY SALARY DESC) where ROWNUM <= 7 ; 
+empno NUMBER(5);
+empname VARCHAR(30);
+begin
+open cursor_new;
+LOOP
+fetch cursor_new INTO empno , empname;
+EXIT WHEN cursor_new%NOTFOUND;
+dbms_output.put_line('Employees with top salaries: ' || empno) ;
+dbms_output.put_line('Employee name: ' || empname) ;
+dbms_output.put_line('=======================================================') ;
+end loop ;
+close cursor_new ;
+exception
+when others THEN
+dbms_output.put_line('Error: ' || SQLERRM) ;
+end;
+/
+
+d. declare
+bonus_percentage NUMBER(10):= 0.2;
+begin
+FOR bonus_details IN (select SALARY , EMPNO from emp2 where SALARY <= 1500) LOOP
+INSERT INTO BONUS VALUES(bonus_details.SALARY * bonus_percentage , bonus_details.EMPNO);
+END LOOP;
+END;
+/
+
+e. DECLARE
+lowest_sal NUMBER(10);
+begin
+select min(SALARY) INTO lowest_sal from EMP2 ;
+FOR i in 1..2 LOOP
+if i = 1 THEN
+INSERT INTO emp2 VALUES (16,'Daniela Roger' , lowest_sal, 'Boston' , 'Salesperson' , SYSDATE , 2);
+elsif i = 2 THEN
+INSERT INTO emp2 VALUES (17, 'Lamserk Rooper', lowest_sal, 'Chicago', 'Manager', SYSDATE, 5);
+END IF;
+END LOOP;
+COMMIT;
+dbms_output.put_line('Data has been updated, 2 insertions has been performed.') ;
+exception
+when others THEN
+dbms_output.put_line('Error: ' || SQLERRM) ;
+END;
+/

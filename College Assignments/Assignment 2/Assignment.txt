@@ -134,34 +134,3 @@ WHERE
 13. select COUNT(*) AS count_of_items from Sales_order_details where Product_rate >= 1500;
 14. select Description from Product_master where Qty_on_hand < Reorder_lvl;
 15. select Order_no,Order_date from Sales_order;
-
-
-
-
-
-If you want to update the database by adding a new column (`new_price`) and updating the values based on a condition, you typically use the `UPDATE` statement. However, note that adding a new column to an existing table might not be straightforward in some database systems. Here's a generic example that you may need to adapt based on your database system:
-
-```sql
--- Step 1: Add a new column to the existing table (Assuming you're using Oracle)
-ALTER TABLE yourTableName ADD new_price NUMBER;
-
--- Step 2: Update the values in the new column based on the condition
-UPDATE yourTableName
-SET new_price = CASE
-                   WHEN product_price > 1500 THEN product_price * 0.15
-                   ELSE product_price
-               END
-WHERE product_price > 1500;
-```
-
-In this example:
-
-- `yourTableName` is the name of your table.
-- `product_price` is assumed to be the existing column with the original prices.
-- `new_price` is the new column that you are adding to the table.
-- The `UPDATE` statement is used to modify existing records in the table.
-- The `CASE` expression updates the `new_price` column based on the condition you specified.
-
-Remember to replace `yourTableName` with the actual name of your table and adjust the column names and types accordingly based on your database schema.
-
-Please note that the syntax may vary depending on the specific database management system you are using (e.g., Oracle, MySQL, SQL Server). The example above assumes an Oracle-like syntax.
